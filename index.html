@@ -21,8 +21,8 @@
       <div class="theme-options" role="group" aria-labelledby="theme-label">
         <button type="button" class="theme-option" data-theme-choice="classic" aria-pressed="true"><span class="theme-swatch swatch-classic" aria-hidden="true"></span><span><small>01</small> Классика</span></button>
         <button type="button" class="theme-option" data-theme-choice="graphite" aria-pressed="false"><span class="theme-swatch swatch-graphite" aria-hidden="true"></span><span><small>02</small> Графит</span></button>
-        <button type="button" class="theme-option" data-theme-choice="swiss" aria-pressed="false"><span class="theme-swatch swatch-swiss" aria-hidden="true"></span><span><small>03</small> Типографика</span></button>
-        <button type="button" class="theme-option" data-theme-choice="editorial" aria-pressed="false"><span class="theme-swatch swatch-editorial" aria-hidden="true"></span><span><small>04</small> Ателье</span></button>
+        <button type="button" class="theme-option" data-theme-choice="swiss" aria-pressed="false"><span class="theme-swatch swatch-swiss" aria-hidden="true"></span><span><small>03</small> Воздух</span></button>
+        <button type="button" class="theme-option" data-theme-choice="editorial" aria-pressed="false"><span class="theme-swatch swatch-editorial" aria-hidden="true"></span><span><small>04</small> Панорама</span></button>
       </div>
     </div>
   </header>
@@ -33,7 +33,11 @@
       <p class="phone">Тел. <a href="tel:+79184303304">+79184303304</a></p>
       <p class="description">Изготовление и установка памятников, надгробий и оградок любой сложности из гранита и мрамора. Быстро. Качественно. Недорого.</p>
       <a class="button" href="#gallery">Смотреть фотографии <span aria-hidden="true">↓</span></a>
-      <button class="hero-photo" type="button" aria-label="Открыть фотографию 1"><img src="assets/preview-01.webp" alt="" width="600" height="800" fetchpriority="high"><span class="photo-plus" aria-hidden="true">+</span></button>
+      <div class="hero-media">
+        <button class="hero-photo hero-photo-main" data-photo-index="0" type="button" aria-label="Открыть фотографию 1"><img src="assets/preview-01.webp" srcset="assets/preview-01.webp 600w, raw/IMG_20261111_130709_574.jpg 1440w" sizes="90vw" alt="" width="600" height="800" fetchpriority="high"></button>
+        <button class="hero-photo hero-photo-secondary" data-photo-index="2" type="button" aria-label="Открыть фотографию 3"><img src="assets/preview-03.webp" alt="" width="600" height="800" loading="lazy"></button>
+        <button class="hero-photo hero-photo-tertiary" data-photo-index="4" type="button" aria-label="Открыть фотографию 5"><img src="assets/preview-05.webp" alt="" width="600" height="800" loading="lazy"></button>
+      </div>
     </section>
     <section class="gallery-section" id="gallery" aria-labelledby="gallery-title">
       <div class="section-heading">

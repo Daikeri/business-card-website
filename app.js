@@ -11,7 +11,7 @@ function renderGallery() {
     const button = document.createElement('button');
     button.className = 'photo-card';
     button.setAttribute('aria-label', `Открыть фотографию ${index + 1}`);
-    button.innerHTML = `<img src="${photo.preview}" alt="Фотография ${index + 1}" loading="lazy" decoding="async" width="600" height="800"><span class="photo-plus" aria-hidden="true">+</span>`;
+    button.innerHTML = `<img src="${photo.preview}" alt="Фотография ${index + 1}" loading="lazy" decoding="async" width="600" height="800">`;
     button.addEventListener('click', () => openPhoto(index, button));
     return button;
   }));
@@ -62,5 +62,6 @@ stage.addEventListener('touchend', event => {
 }, { passive: true });
 stage.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
 renderGallery();
-const heroPhoto = document.querySelector('.hero-photo');
-heroPhoto.addEventListener('click', () => openPhoto(0, heroPhoto));
+document.querySelectorAll('[data-photo-index]').forEach(button => {
+  button.addEventListener('click', () => openPhoto(Number(button.dataset.photoIndex), button));
+});

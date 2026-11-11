@@ -1,6 +1,6 @@
 // Apply before styles load to avoid flashing the default appearance.
 (() => {
-  const themes = { classic: '#f7f7f2', graphite: '#191c20', swiss: '#f5f5f3', editorial: '#f3eade' };
+  const themes = { classic: '#f7f7f2', graphite: '#191c20', swiss: '#f0f5f8', editorial: '#10262b' };
   let theme = 'classic';
   try {
     const saved = localStorage.getItem('mir-kamnya-theme');
