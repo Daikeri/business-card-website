@@ -80,3 +80,5 @@ stage.addEventListener('touchend', event => {
   touchStart = null;
 }, { passive: true });
 renderGallery();
+const heroPhoto = document.querySelector('.hero-photo');
+heroPhoto.addEventListener('click', () => openPhoto(0, heroPhoto));
