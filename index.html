@@ -45,6 +45,12 @@
     </section>
   </main>
   <footer class="wrap"><a href="tel:+79184303304">Тел. +79184303304</a><a href="#">Наверх ↑</a></footer>
-  <dialog class="lightbox" aria-label="Просмотр фотографии"><div class="lightbox-top"><span id="viewer-count" aria-live="polite"></span><div><button id="zoom" aria-label="Увеличить фотографию" aria-pressed="false">Увеличить +</button><a id="original" target="_blank" rel="noopener">Оригинал ↗</a><button id="close" aria-label="Закрыть просмотр">✕</button></div></div><div class="viewer-stage" id="viewer-stage"><img id="viewer-image" alt=""></div><button class="viewer-prev" id="previous" aria-label="Предыдущая фотография">←</button><button class="viewer-next" id="next" aria-label="Следующая фотография">→</button><div class="lightbox-bottom"><span id="viewer-caption"></span><span>← → листать · Esc закрыть</span></div></dialog>
+  <dialog class="lightbox" aria-label="Просмотр фотографии">
+    <button id="close" type="button" aria-label="Закрыть просмотр">✕</button>
+    <div class="viewer-stage" id="viewer-stage"><img id="viewer-image" alt=""></div>
+    <button class="viewer-prev" id="previous" type="button" aria-label="Предыдущая фотография">←</button>
+    <button class="viewer-next" id="next" type="button" aria-label="Следующая фотография">→</button>
+    <span id="viewer-count" aria-live="polite" aria-atomic="true"></span>
+  </dialog>
 </body>
 </html>

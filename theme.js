@@ -10,6 +10,10 @@
   document.querySelector('meta[name="theme-color"]').content = themes[theme];
 
   document.addEventListener('DOMContentLoaded', () => {
+    const themeBar = document.querySelector('.theme-bar');
+    const updateBarHeight = () => document.documentElement.style.setProperty('--theme-bar-height', `${themeBar.getBoundingClientRect().height}px`);
+    updateBarHeight();
+    new ResizeObserver(updateBarHeight).observe(themeBar);
     const buttons = document.querySelectorAll('[data-theme-choice]');
     function applyTheme(choice) {
       document.documentElement.dataset.theme = choice;
