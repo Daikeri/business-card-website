@@ -3,15 +3,14 @@
   --bg: #f7f7f2; --ink: #253c36; --muted: #64706b; --line: #d5dbd2;
   --accent: #294e42; --on-accent: #fff; --surface: #eaece5;
   --body-font: 'Manrope', sans-serif; --heading-font: 'Cormorant Garamond', Georgia, serif;
-  --theme-bar-height: 0px;
 }
-html { scroll-padding-top: var(--theme-bar-height); }
+html { scroll-padding-top: 24px; }
 body { font: 16px/1.65 var(--body-font); }
 button { color: inherit; }
 a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 .wrap { width: min(1320px, calc(100% - 96px)); }
 .skip { background: var(--bg); z-index: 30; }
-.intro { position: relative; display: grid; min-height: calc(100svh - var(--theme-bar-height)); align-content: center; padding-block: 80px 72px; gap: 24px; }
+.intro { position: relative; display: grid; align-content: start; padding-block: 80px 72px; gap: 24px; }
 h1 { font: 500 clamp(64px, 8.4vw, 124px)/.98 var(--heading-font); letter-spacing: -.045em; }
 .price { color: var(--accent); font-size: 15px; letter-spacing: .18em; text-transform: uppercase; margin: 0; }
 .phone { font-size: clamp(22px, 2.1vw, 30px); line-height: 1.4; margin: 0; }
@@ -67,7 +66,7 @@ footer a { text-decoration-thickness: 1px; text-underline-offset: 5px; }
   --accent: #365d79; --on-accent: #fff; --surface: #e1ebf1;
   --body-font: 'Manrope', sans-serif; --heading-font: 'Manrope', sans-serif;
 }
-[data-theme="swiss"] .intro { grid-template-columns: 1.1fr 1fr; grid-template-rows: repeat(5, auto); gap: 28px 7%; padding-block: 64px; align-items: start; }
+[data-theme="swiss"] .intro { grid-template-columns: 1.1fr 1fr; grid-template-rows: repeat(5, auto); gap: 28px 7%; padding-block: clamp(32px, 4vw, 56px) 64px; align-items: start; }
 [data-theme="swiss"] h1 { grid-column: 1; grid-row: 2; max-width: 580px; font-size: clamp(72px, 7.6vw, 112px); line-height: 1.03; font-weight: 500; letter-spacing: -.065em; }
 [data-theme="swiss"] .price { grid-column: 1; grid-row: 1; width: fit-content; padding: 8px 16px; border: 1px solid var(--line); border-radius: 30px; font-size: 12px; letter-spacing: .1em; }
 [data-theme="swiss"] .description { grid-column: 1; grid-row: 3; max-width: 490px; font-size: 18px; }
@@ -102,7 +101,7 @@ footer a { text-decoration-thickness: 1px; text-underline-offset: 5px; }
 [data-theme="editorial"] .hero-photo-main::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(8, 25, 29, .96) 0%, rgba(8, 25, 29, .86) 42%, rgba(8, 25, 29, .12) 100%); }
 [data-theme="editorial"] .hero-photo img { object-position: center 48%; }
 [data-theme="editorial"] .gallery-section { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 44px; padding-block: 64px; border-top: 0; }
-[data-theme="editorial"] .section-heading { display: block; position: sticky; top: calc(var(--theme-bar-height) + 40px); align-self: start; }
+[data-theme="editorial"] .section-heading { display: block; position: sticky; top: 40px; align-self: start; }
 [data-theme="editorial"] h2 { font-size: 44px; }
 [data-theme="editorial"] .section-heading p { margin-top: 20px; max-width: 170px; line-height: 1.8; }
 [data-theme="editorial"] .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
@@ -125,11 +124,11 @@ footer a { text-decoration-thickness: 1px; text-underline-offset: 5px; }
 }
 @media (max-width: 760px) {
   .wrap { width: calc(100% - 32px); }
-  .intro, [data-theme] .intro { padding-block: 40px; gap: 22px; }
+  .intro, [data-theme] .intro { padding-block: 28px 40px; gap: 22px; }
   h1 { font-size: clamp(49px, 12vw, 88px); }
   .description { font-size: 18px; }
   .phone { font-size: 24px; }
-  [data-theme="graphite"] .intro, [data-theme="swiss"] .intro { display: flex; flex-direction: column; align-items: stretch; justify-content: center; }
+  [data-theme="graphite"] .intro, [data-theme="swiss"] .intro { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; }
   [data-theme="graphite"] h1, [data-theme="swiss"] h1 { font-size: clamp(58px, 12vw, 86px); order: 1; }
   [data-theme="graphite"] .price, [data-theme="swiss"] .price { order: 0; }
   [data-theme="graphite"] .description, [data-theme="swiss"] .description { order: 2; }
