@@ -66,10 +66,10 @@ footer a { text-decoration-thickness: 1px; text-underline-offset: 5px; }
   --accent: #365d79; --on-accent: #fff; --surface: #e1ebf1;
   --body-font: 'Manrope', sans-serif; --heading-font: 'Manrope', sans-serif;
 }
-[data-theme="swiss"] .intro { grid-template-columns: 1.1fr 1fr; grid-template-rows: repeat(5, auto); gap: 28px 7%; padding-block: clamp(32px, 4vw, 56px) 64px; align-items: start; }
-[data-theme="swiss"] h1 { grid-column: 1; grid-row: 2; max-width: 580px; font-size: clamp(72px, 7.6vw, 112px); line-height: 1.03; font-weight: 500; letter-spacing: -.065em; }
+[data-theme="swiss"] .intro { grid-template-columns: 1.1fr 1fr; grid-template-rows: repeat(5, auto); gap: clamp(14px, 2.8svh, 28px) 7%; padding-block: clamp(20px, 4svh, 48px) clamp(28px, 5svh, 64px); align-items: start; }
+[data-theme="swiss"] h1 { grid-column: 1; grid-row: 2; max-width: 580px; font-size: clamp(56px, min(7.6vw, 11svh), 112px); line-height: 1.03; font-weight: 500; letter-spacing: -.065em; }
 [data-theme="swiss"] .price { grid-column: 1; grid-row: 1; width: fit-content; padding: 8px 16px; border: 1px solid var(--line); border-radius: 30px; font-size: 12px; letter-spacing: .1em; }
-[data-theme="swiss"] .description { grid-column: 1; grid-row: 3; max-width: 490px; font-size: 18px; }
+[data-theme="swiss"] .description { grid-column: 1; grid-row: 3; max-width: 560px; font-size: clamp(16px, 2svh, 18px); line-height: 1.55; }
 [data-theme="swiss"] .phone { grid-column: 1; grid-row: 4; font-size: 26px; }
 [data-theme="swiss"] .phone a { text-decoration: none; }
 [data-theme="swiss"] .button { grid-column: 1; grid-row: 5; border-radius: 100px; }
@@ -161,7 +161,18 @@ footer a { text-decoration-thickness: 1px; text-underline-offset: 5px; }
 /* Contact details share one grid item to keep the address below the phone. */
 [data-theme="swiss"] .contacts { grid-column: 1; grid-row: 4; }
 .address { margin-top: 8px; color: var(--muted); font-size: 16px; line-height: 1.5; }
-.description p + p { margin-top: 12px; }
+.description p + p { margin-top: clamp(6px, 1svh, 12px); }
 @media (max-width: 760px) {
+  [data-theme="swiss"] .intro { gap: clamp(12px, 2svh, 22px); padding-block: clamp(16px, 3svh, 28px) 32px; }
+  [data-theme="swiss"] h1 { font-size: clamp(44px, min(12vw, 8svh), 86px); }
   [data-theme="swiss"] .contacts { order: 3; }
+}
+@media (max-height: 650px) {
+  [data-theme="swiss"] .intro { row-gap: 12px; padding-block: 16px 24px; }
+  [data-theme="swiss"] .price { padding-block: 5px; }
+  [data-theme="swiss"] .description { line-height: 1.45; }
+  [data-theme="swiss"] .description br { display: none; }
+  [data-theme="swiss"] .phone { font-size: 23px; }
+  .address { margin-top: 4px; }
+  [data-theme="swiss"] .button { padding-block: 12px; }
 }
