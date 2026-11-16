@@ -5,6 +5,31 @@ const stage = document.querySelector('#viewer-stage');
 const viewerPhotos = photos.map((_, index) => index);
 let current = 0;
 let trigger = null;
+let photoRequest = 0;
+const originalCache = new Map();
+
+function loadOriginal(index, priority = 'low') {
+  const cached = originalCache.get(index);
+  if (cached) {
+    if (priority === 'high') cached.image.fetchPriority = 'high';
+    return cached;
+  }
+  const image = new Image();
+  image.decoding = 'async';
+  image.fetchPriority = priority;
+  const entry = { image, ready: false, promise: null };
+  originalCache.set(index, entry);
+  image.src = photos[index].src;
+  entry.promise = image.decode().then(() => {
+    entry.ready = true;
+    return true;
+  }).catch(() => {
+    // Keep the preview on failure and allow a later visit to retry.
+    if (originalCache.get(index) === entry) originalCache.delete(index);
+    return false;
+  });
+  return entry;
+}
 
 function renderGallery() {
   grid.replaceChildren(...photos.map((photo, index) => {
@@ -19,9 +44,23 @@ function renderGallery() {
 function showPhoto() {
   const index = viewerPhotos[current];
   const photo = photos[index];
-  viewerImage.src = photo.src;
+  const request = ++photoRequest;
+  const original = loadOriginal(index, 'high');
+  viewerImage.src = original.ready ? photo.src : photo.preview;
   viewerImage.alt = `Фотография ${index + 1}`;
   document.querySelector('#viewer-count').textContent = `${current + 1} / ${viewerPhotos.length}`;
+  original.promise.then(ready => {
+    if (ready && request === photoRequest && dialog.open) viewerImage.src = photo.src;
+  });
+
+  const neighbors = [-1, 1].map(offset =>
+    viewerPhotos[(current + offset + viewerPhotos.length) % viewerPhotos.length]);
+  // Retain only the current photo and its neighbors in the decoded-image cache.
+  const retained = new Set([index, ...neighbors]);
+  for (const cachedIndex of originalCache.keys()) {
+    if (!retained.has(cachedIndex)) originalCache.delete(cachedIndex);
+  }
+  neighbors.forEach(neighbor => loadOriginal(neighbor));
 }
 function openPhoto(index, source) {
   trigger = source;
@@ -39,6 +78,8 @@ document.querySelector('#previous').addEventListener('click', () => step(-1));
 document.querySelector('#next').addEventListener('click', () => step(1));
 document.querySelector('#close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('close', () => {
+  photoRequest++;
+  originalCache.clear();
   document.body.classList.remove('viewer-open');
   touchStart = null;
   trigger?.focus({ preventScroll: true });
