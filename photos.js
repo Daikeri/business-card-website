@@ -24,10 +24,6 @@ const photos = [
     "preview": "assets/preview-06.webp"
   },
   {
-    "src": "raw/IMG_20261111_130709_690.jpg",
-    "preview": "assets/preview-07.webp"
-  },
-  {
     "src": "raw/IMG_20261111_130709_692.jpg",
     "preview": "assets/preview-08.webp"
   },
